@@ -37,10 +37,10 @@ jobs:
         run: npm ci
 
       - name: Install Serverless Framework
-        run: npm install -g serverless
+        run: npm install -g serverless@3.38.0  
 
       - name: Deploy to AWS
-        run: serverless deploy
+        run: serverless deploy --verbose
         env:
           # Add any environment variables your deployment needs
           NODE_ENV: production
