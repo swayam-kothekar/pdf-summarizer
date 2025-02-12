@@ -1,0 +1,26 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "PDF summarizer using LangChain and Mistral",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node server.js",
+    "deploy": "serverless deploy",
+    "dev": "serverless offline"
+  },
+  "dependencies": {
+    "@huggingface/inference": "^2.6.4",
+    "aws-sdk": "^2.1692.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "langchain": "^0.0.196",
+    "multer": "^1.4.5-lts.1",
+    "pdf-parse": "^1.1.1",
+    "serverless": "^4.6.2",
+    "serverless-http": "^3.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
