@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "deploy": "serverless deploy",
-    "dev": "serverless offline"
+    "dev": "node server.js"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",
