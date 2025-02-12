@@ -41,3 +41,5 @@ jobs:
 
       - name: Deploy to AWS
         run: serverless deploy --verbose
+        env:
+          NODE_ENV: production
