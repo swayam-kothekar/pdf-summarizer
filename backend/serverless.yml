@@ -1,0 +1,40 @@
+# serverless.yml
+service: pdf-summarizer-api
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  environment:
+    # Using SSM Parameter Store
+    HUGGINGFACEHUB_API_TOKEN: ${ssm:/pdf-summarizer/${opt:stage, 'dev'}/huggingface-token}
+  memorySize: 1024 # Increased memory for processing larger PDFs
+
+  # Give Lambda permission to access SSM parameters
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - ssm:GetParameter
+            - ssm:GetParameters
+          Resource: 
+            - arn:aws:ssm:${aws:region, 'us-east-1'}:${aws:accountId}:parameter/pdf-summarizer/${opt:stage, 'dev'}/*
+
+functions:
+  api:
+    handler: handler.handler
+    events:
+      - http:
+          path: /upload
+          method: post
+          cors: true
+
+
+package:
+  patterns:
+    - '!.env'
+    - '!Dockerfile'
+    - '!.git/**'
+    - '!README.md'

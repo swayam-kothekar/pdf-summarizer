@@ -3,7 +3,7 @@ node_modules/
 
 .serverless
 
-*.yml
+pdf-summarizer.yml
 
 #Dockerfiles
 Dockerfile
