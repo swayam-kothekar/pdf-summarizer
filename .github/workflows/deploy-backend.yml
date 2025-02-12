@@ -41,6 +41,3 @@ jobs:
 
       - name: Deploy to AWS
         run: serverless deploy --verbose
-        env:
-          # Add any environment variables your deployment needs
-          NODE_ENV: production
